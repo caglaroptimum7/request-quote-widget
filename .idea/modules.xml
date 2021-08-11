@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/request-quote-widget.iml" filepath="$PROJECT_DIR$/.idea/request-quote-widget.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../test-project-bigcommerce/.idea/test-project-bigcommerce.iml" filepath="$PROJECT_DIR$/../test-project-bigcommerce/.idea/test-project-bigcommerce.iml" />
-    </modules>
-  </component>
-</project>

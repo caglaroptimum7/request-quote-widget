@@ -54,17 +54,4 @@ const datasetToObject = (elem) => {
 
 let cartChange = null;
 
-// // document.querySelector('[data-action="dec"]').addEventListener("click", function () {
-// //     console.log('dec')
-// //     // cartChange = 'dec'
-// // });
-// document.querySelector('[data-action="inc"]').addEventListener("click", function () {
-//     console.log('inc')
-//     // cartChange = 'inc'
-// });
-// // document.querySelector('.cart-remove').addEventListener("click", function () {
-// //     console.log('cart-remove')
-// //     // cartChange = 'cart-remove'
-// // });
-
 ReactDOM.render(<App args={datasetToObject(Application)} cartChange={cartChange}/>, Application);

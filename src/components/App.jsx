@@ -33,23 +33,10 @@ class App extends React.PureComponent {
     componentDidMount() {
         this.setState({token: this.state.args.storefrontToken});
         this.setState({firstLoaded: true});
-        // this.getCartContent('didMount');
-
-        // let labelSize = $('.cart-total-label').length;
-        // let labelItem = $('.cart-total-label');
-        // for (let i = 0; i < labelSize; i++) {
-        //     if (labelItem[i].textContent.trim().match(/subtotal/gi) !== null) {
-        //         labelItem[i].nextElementSibling.classList.add('subTotalValue');
-        //         window.DOMElementReady('.subTotalValue', () => {
-        //             console.log(`%cCart item changed!`, 'color: #208c05');
-        //         })
-        //     }
-        // }
     }
 
     getCartContent() {
         return axios.get("/api/storefront/carts?include=lineItems.physicalItems.options")
-
     }
 
 
@@ -68,7 +55,6 @@ class App extends React.PureComponent {
                 if (response.status === 200) {
                     this.setState({CartContent: response.data[0].lineItems.physicalItems})
                 }
-
             })
             .then(() => {
                 console.log(this.state)
