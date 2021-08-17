@@ -56,7 +56,7 @@ class App extends React.PureComponent {
                 return parseFloat(cartAmount)
 
             }).then((cartAmount) => {
-            if (this.state.args.isActive === 'true' && parseFloat(this.state.args.minTreshold) <= cartAmount) {
+            if (this.state.args.isActive === 'true' && parseFloat(this.state.args.minThreshold) <= cartAmount) {
                 this.setState({isRequestQuoteHiden: false});
             }
 
