@@ -52,6 +52,6 @@ this.state.args.cartRemoveOnSuccess
 
 - ``data-is-active`` attribute is obviously activating the application.
 
-- If the client wants to clear cart on successfully submitted form you can activate it ``data-cart-remove-on-success`` attribute.
+- If the client wants to clear the cart after successfully submitted the form you can activate it from ``data-cart-remove-on-success`` attribute.
 
 
