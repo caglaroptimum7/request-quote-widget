@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/App";
+import $ from 'jquery';
 
-const Application = document.getElementById('raq-app');
+
 let listeners = [],
     doc = window.document,
     MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
@@ -52,6 +53,34 @@ const datasetToObject = (elem) => {
     return data;
 }
 
-let cartChange = null;
+let itComesFromQuote = null;
 
-ReactDOM.render(<App args={datasetToObject(Application)} cartChange={cartChange}/>, Application);
+if (window.localStorage.getItem('raq-object')!== null) {
+    itComesFromQuote = {
+        status : true,
+        data: JSON.parse(window.localStorage.getItem('raq-object'))
+    }
+}else {
+    itComesFromQuote = {
+        status : false,
+        data: null
+    }
+}
+
+$(document).ready(function () {
+    let aHrefButtons = $('.button');
+    let aHrefButtonSizes = $('.button').length;
+
+    for (let i = 0; i<aHrefButtonSizes; i++) {
+        if (aHrefButtons[i].textContent.trim().match(/Proceed to Checkout/ig) !== null) {
+            $(`<div id="raq-app"></div>`).insertAfter(aHrefButtons[i])
+        }
+    }
+
+    let cartChange = null;
+
+    console.log(`%c📙 Request a Quote Application by Optimum7`, 'font-size: 12.9px; color:#ff6600; font-weight:bold;');
+    const Application = document.getElementById('raq-app');
+    const scriptTag = document.getElementById('raq-app-script');
+    ReactDOM.render(<App args={datasetToObject(scriptTag)} cartChange={cartChange} itComesFromQuote={itComesFromQuote}/>, Application);
+})
