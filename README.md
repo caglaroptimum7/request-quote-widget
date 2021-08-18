@@ -34,7 +34,7 @@ Place this code block on the ``layout/base.html`` file.
 
 It comes from the request a quote auth API: ``https://raq-auth-api-server.herokuapp.com/client/:accessToken`` **
 
-Exp. ``https://raq-auth-api-server.herokuapp.com/client/vCztSQeVwjPshCBYLHyOmJNEoCLNm8RM`` this url displays Paxton Patterson data.
+Exp. [https://raq-auth-api-server.herokuapp.com/client/vCztSQeVwjPshCBYLHyOmJNEoCLNm8RM](https://raq-auth-api-server.herokuapp.com/client/vCztSQeVwjPshCBYLHyOmJNEoCLNm8RM) this url displays Paxton Patterson data.
 ## Options and Attributes
 
 - You can add many of data attributes and can be used in the React App: 
