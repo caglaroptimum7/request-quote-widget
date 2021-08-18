@@ -1,6 +1,6 @@
 {
   "name": "react-standalone-application",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Optimum7 - React Standalone Web Application",
   "main": "dist/main.js",
   "files": [

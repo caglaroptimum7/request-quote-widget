@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/App";
 import $ from 'jquery';
-
+import pack from '../package.json';
+import axios from 'axios';
 
 let listeners = [],
     doc = window.document,
@@ -55,32 +56,53 @@ const datasetToObject = (elem) => {
 
 let itComesFromQuote = null;
 
-if (window.localStorage.getItem('raq-object')!== null) {
+if (window.localStorage.getItem('raq-object') !== null) {
     itComesFromQuote = {
-        status : true,
+        status: true,
         data: JSON.parse(window.localStorage.getItem('raq-object'))
     }
-}else {
+} else {
     itComesFromQuote = {
-        status : false,
+        status: false,
         data: null
     }
 }
 
 $(document).ready(function () {
+    const scriptTag = document.getElementById('raq-app-script');
+
     let aHrefButtons = $('.button');
     let aHrefButtonSizes = $('.button').length;
 
-    for (let i = 0; i<aHrefButtonSizes; i++) {
+    for (let i = 0; i < aHrefButtonSizes; i++) {
         if (aHrefButtons[i].textContent.trim().match(/Proceed to Checkout/ig) !== null) {
             $(`<div id="raq-app"></div>`).insertAfter(aHrefButtons[i])
         }
     }
 
-    let cartChange = null;
+    const accessToken = datasetToObject(scriptTag).accessToken;
+    let apiUrl = null;
+    axios.get(`https://raq-auth-api-server.herokuapp.com/client/${accessToken}`)
+        .then(response => {
+            if (response.data.success) {
+                apiUrl = response.data.data[0].apiUrl;
+                return apiUrl
+            }else {
+                return null
+            }
+        }).then((url) => {
+        if (url !== null) {
+            console.log(`%c🟠 Request a Quote Application by [Optimum7] v${pack.version}`, 'font-size: 12px; color:#ff6600; font-weight:bold;');
+            const Application = document.getElementById('raq-app');
+            ReactDOM.render(<App args={datasetToObject(scriptTag)} apiUrl={url}
+                                 itComesFromQuote={itComesFromQuote}/>, Application);
+        } else {
+            console.log(`%cClient API Access Token is not valid.`,'color:#ff0000;font-weight:bold;');
+        }
 
-    console.log(`%c📙 Request a Quote Application by Optimum7`, 'font-size: 12.9px; color:#ff6600; font-weight:bold;');
-    const Application = document.getElementById('raq-app');
-    const scriptTag = document.getElementById('raq-app-script');
-    ReactDOM.render(<App args={datasetToObject(scriptTag)} cartChange={cartChange} itComesFromQuote={itComesFromQuote}/>, Application);
+        })
+        .catch((err)=> {
+            console.log(`%cAPI Server Error `,'color:#ff0000;font-weight:bold;',err);
+        })
+
 })

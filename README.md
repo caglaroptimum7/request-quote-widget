@@ -21,16 +21,18 @@ Place this code block on the ``layout/base.html`` file.
       id="raq-app-script"
       src="widget-script.js"
       data-storefront-token="{{settings.storefront_api.token}}"
-      data-api-url="quote-request-api.url"
       data-is-active="true"
       data-min-threshold="99"
-      data-cart-remove-on-success="false">
+      data-cart-remove-on-success="false"
+      data-access-token="vCztSQeVwjPshCBYLHyOmJNEoCLNm8RM">
 </script>
 ```
 
 **Widget script: ``{{cdn 'assets/js/theme/request-quote-widget/raq-widget.js'}}``**
 
-**Quote Request API URL: ``https://paxton-patterson-integration.opt7dev.com/api/quote``**
+**Access Token: ``"vCztSQeVwjPshCBYLHyOmJNEoCLNm8RM"`` 
+
+It comes from the request a quote auth API: ``https://raq-auth-api-server.herokuapp.com/client/:accessToken`` **
 
 ## Options and Attributes
 

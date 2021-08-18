@@ -33,7 +33,7 @@ class App extends React.PureComponent {
             firstLoaded: false,
             comesFromQuote: false,
             quoteObject: null,
-            apiUrl: props.args.apiUrl,
+            apiUrl: props.apiUrl,
             cartRemoveOnSuccess: props.args.cartRemoveOnSuccess === "true" ? true : false
         }
     }
@@ -96,8 +96,7 @@ class App extends React.PureComponent {
 
     submitRequest() {
         let {formData,validation} = this.state;
-        console.log(formData)
-        console.log(validation)
+
 
         if (this.state.validation.fullNameValid && this.state.validation.emailValid && this.state.validation.phoneValid && this.state.validation.companyValid) {
 
@@ -110,7 +109,7 @@ class App extends React.PureComponent {
                     }
                 })
                 .then(() => {
-                    console.log(this.state);
+                    // console.log(this.state);
                     let StringifyData = {
                         Customer: this.state.formData,
                         Cart: this.state.CartContent,
